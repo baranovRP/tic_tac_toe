@@ -345,13 +345,15 @@ window.addEventListener('load', () => {
     const element = el;
     let div = document.createElement('div');
     div.innerHTML = '';
+    let innerString = '';
     for (let i = 0; i < d.x; i++) {
-      // div.innerHTML += '<div class="row">';
+      innerString += '<div class="row">';
       for (let j = 0; j < d.y; j++) {
-        div.innerHTML += `<div class="cell" data-idx="${counter++}" data-isfree="true"></div>`;
+        innerString += `<div class="cell" data-idx="${counter++}" data-isfree="true"></div>`;
       }
-      // div.innerHTML += '</div>';
+      innerString += '</div>';
     }
+    div.innerHTML = innerString;
     [...div.children].forEach(item => element.appendChild(item));
     div = undefined;
   }
