@@ -71,7 +71,9 @@ window.addEventListener('load', () => {
       currentState.playerMove = true;
       showMsg(`Игрок "${currentState.playerSide}" твой ход`);
     }).catch(err => {
-      if (err && err.status.toString().startsWith('5')) {
+      if (err.message) {
+        stopGame(showErr, err.message);
+      } else if (err.status.toString().startsWith('5')) {
         waitResponse();
       } else {
         throw err.json().then(e => {
