@@ -264,7 +264,7 @@ window.addEventListener('load', () => {
    */
   gamesList.addEventListener('click', (event) => {
     event.preventDefault();
-    if (event.target.dataset.id && event.target.dataset.id !== currentState.gameId) {
+    if (event.target.dataset.id) {
       ws.send(JSON.stringify({ register: event.target.dataset.id }));
     }
   });
