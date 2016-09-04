@@ -51,6 +51,7 @@ div {
   float: left;
   width: 500px;
   height: 500px;
+  font-size: 0;
 }
 
 .row {
@@ -66,6 +67,7 @@ div {
   width: 50px;
   height: 50px;
   border: 2px solid #808080;
+  position: relative;
 }
 
 .cell.o:after {
@@ -76,8 +78,10 @@ div {
   content: 'o';
   text-align: center;
   font-weight: bold;
-  font-size: 35px;
-  line-height: 2rem;
+  font-size: 50px;
+  line-height: 50px;
+  top: -7px;
+  left: 3px;
 }
 
 .cell.x:after {
@@ -88,8 +92,10 @@ div {
   content: 'x';
   text-align: center;
   font-weight: bold;
-  font-size: 35px;
+  font-size: 50px;
   line-height: 50px;
+  top: -7px;
+  left: 3px;
 }
 
 .games {
