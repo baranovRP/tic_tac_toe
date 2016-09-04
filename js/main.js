@@ -284,6 +284,14 @@ window.addEventListener('load', () => {
   });
 
   /**
+   * WebSocket close handler
+   */
+  ws.addEventListener('close', (event) => {
+    event.preventDefault();
+    stopGame(showErr, `WebSocket close with code: ${event.code}`);
+  });
+
+  /**
    * Send request
    * @param {String} url
    * @param {Object} init
