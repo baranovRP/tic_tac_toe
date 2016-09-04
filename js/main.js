@@ -71,7 +71,7 @@ window.addEventListener('load', () => {
       currentState.playerMove = true;
       showMsg(`Игрок "${currentState.playerSide}" твой ход`);
     }).catch(err => {
-      if (err.status.toString().startsWith('5')) {
+      if (err && err.status.toString().startsWith('5')) {
         waitResponse();
       } else {
         throw err.json().then(e => {
@@ -264,7 +264,7 @@ window.addEventListener('load', () => {
    */
   gamesList.addEventListener('click', (event) => {
     event.preventDefault();
-    if (event.target.dataset.id) {
+    if (event.target.dataset.id && event.target.dataset.id !== currentState.gameId) {
       ws.send(JSON.stringify({ register: event.target.dataset.id }));
     }
   });
@@ -346,11 +346,11 @@ window.addEventListener('load', () => {
     let div = document.createElement('div');
     div.innerHTML = '';
     for (let i = 0; i < d.x; i++) {
-      div.innerHTML += '<div class="row">';
+      // div.innerHTML += '<div class="row">';
       for (let j = 0; j < d.y; j++) {
         div.innerHTML += `<div class="cell" data-idx="${counter++}" data-isfree="true"></div>`;
       }
-      div.innerHTML += '</div>';
+      // div.innerHTML += '</div>';
     }
     [...div.children].forEach(item => element.appendChild(item));
     div = undefined;
