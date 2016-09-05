@@ -77,7 +77,7 @@ window.addEventListener('load', () => {
         waitResponse();
       } else {
         throw err.json().then(e => {
-          let errM = 'waitResponse: Неизвестная ошибка';
+          let errM = 'Неизвестная ошибка';
           if (e.message) {
             errM = e.message;
           }
@@ -138,9 +138,9 @@ window.addEventListener('load', () => {
           const errMsg =
             `START_GAME failed: ${GAME_READY} ${err.status} (${err.statusText})`;
           log(errMsg);
-          let msg = 'startGame: Неизвестная ошибка старта игры';
+          let msg = 'Неизвестная ошибка старта игры';
           if (err.status === 410) {
-            msg = 'startGame: Ошибка старта игры: другой игрок не ответил';
+            msg = 'Ошибка старта игры: другой игрок не ответил';
           }
           stopGame(showErr, msg);
         });
@@ -148,7 +148,7 @@ window.addEventListener('load', () => {
         break;
       default:
         log(`Unexpected action type: ${action}`);
-        stopGame(showErr, 'startGame: Неизвестная ошибка старта игры');
+        stopGame(showErr, 'Неизвестная ошибка старта игры');
         break;
     }
   }
@@ -187,7 +187,7 @@ window.addEventListener('load', () => {
       const errMsg = `${GAME_READY} ${err.status} (${err.statusText})`;
       log(errMsg);
       throw err.json().then(e => {
-        let msg = 'battlefield: Неизвестная ошибка';
+        let msg = 'Неизвестная ошибка';
         if (e.message) {
           msg = e.message;
           stopGame(showErr, msg);
@@ -243,7 +243,7 @@ window.addEventListener('load', () => {
           const errMsg = `${GAME_READY} ${err.status} (${err.statusText})`;
           log(errMsg);
           throw err.json().then(e => {
-            let errM = 'actionBtn: Неизвестная ошибка';
+            let errM = 'Неизвестная ошибка';
             if (e.message) {
               errM = e.message;
             }
