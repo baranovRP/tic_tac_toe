@@ -71,9 +71,7 @@ window.addEventListener('load', () => {
       currentState.playerMove = true;
       showMsg(`Игрок "${currentState.playerSide}" твой ход`);
     }).catch(err => {
-      if (err.message) {
-        stopGame(showErr, err.message);
-      } else if (err.status.toString().startsWith('5')) {
+      if (err.status && err.status.toString().startsWith('5')) {
         waitResponse();
       } else {
         throw err.json().then(e => {
@@ -299,6 +297,10 @@ window.addEventListener('load', () => {
    */
   function sendReq(url, init) {
     return fetch(url, init).then(response => {
+      if (response.type === 'opaque') {
+        log(`opaque response: ${response.message}`);
+        throw response;
+      }
       if (!response.ok) {
         const errMsg =
           `sendReq: ${init.method} ${url} ${response.status} (${response.statusText})`;
